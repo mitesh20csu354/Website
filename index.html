@@ -25,19 +25,20 @@
         header {
             display: flex;
             align-items: center;
-            justify-content: center;
             background-color: #003366;
             color: white;
             padding: 20px;
-            text-align: center;
+        }
+
+        .logo {
+            margin-right: 20px;
         }
 
         .brand-name {
-            font-size: 36px;
-            font-family: 'Courier New', Courier, monospace;
-            letter-spacing: 2px;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            margin-top: 20px;
         }
 
         h1 {
@@ -78,28 +79,16 @@
         }
 
         @keyframes fade {
-            0% {
+            0%, 100% {
                 opacity: 1;
             }
 
-            20% {
+            20%, 80% {
                 opacity: 0;
             }
 
-            40% {
+            40%, 60% {
                 opacity: 1;
-            }
-
-            60% {
-                opacity: 0;
-            }
-
-            80% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
             }
         }
 
@@ -130,20 +119,21 @@
             margin-top: 60px;
         }
 
-        .cloud-box {
+        .race-box {
             width: 30%;
             padding: 20px;
             background-color: #ffffff;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 50px;
+            border-radius: 40px;
             position: relative;
             overflow: hidden;
             text-align: left;
-            background: linear-gradient(to right, #003366, #0066cc);
+            background: linear-gradient(to right, #0066cc, #3399ff);
             color: white;
+            font-family: 'Courier New', Courier, monospace;
         }
 
-        .cloud-box:before {
+        .race-box:before {
             content: '';
             position: absolute;
             bottom: -20px;
@@ -155,13 +145,13 @@
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .cloud-box h3 {
+        .race-box h3 {
             font-size: 24px;
             margin-bottom: 20px;
             color: #fff;
         }
 
-        .cloud-box p {
+        .race-box p {
             font-size: 16px;
             color: #fff;
             line-height: 1.5;
@@ -180,6 +170,9 @@
 
 <body>
     <header>
+        <div class="logo">
+            <img src="logo.jfif" alt="Volkswagen Logo" height="50">
+        </div>
         <div>
             <h1>VOLKSWAGEN</h1>
             <p class="brand-name">Know Your Volkswagen</p>
@@ -188,16 +181,16 @@
 
     <main>
         <section class="carousel-section">
-            <!-- First Car Box (e.g., Virtus) -->
+            <!-- First Car Box (Virtus) -->
             <div class="carousel-box">
-                <img src="Volkswagen-Virtus-TDS-2022.jpg" alt="Virtus">
-                <img src="virtus1.jfif" alt="Virtus1">
-                <img src="toyota-rav4.jpg" alt="Virtus2">
-                <img src="virtus4.jpeg" alt="Virtus3">
-                <img src="virtus3.png" alt="Virtus4">
+                <img src="virtus1.jfif" alt="Virtus">
+                <img src="Volkswagen-Virtus-TDS-2022.jpeg alt="Virtus">
+                <img src="virtus3.png" alt="Virtus">
+                <img src="virtus4.jpeg" alt="Virtus">
+                <img src="virtus5.jpg" alt="Virtus">
             </div>
 
-            <!-- Second Car Box (e.g., Taigun) -->
+            <!-- Second Car Box (Taigun) -->
             <div class="carousel-box">
                 <img src="taigun1.jpeg" alt="Taigun">
                 <img src="taigun2.jpeg" alt="Taigun">
@@ -206,36 +199,31 @@
                 <img src="taigun5.jpeg" alt="Taigun">
             </div>
 
-            <!-- Third Car Box (e.g., Tiguan) -->
+            <!-- Third Car Box (Tiguan) -->
             <div class="carousel-box">
-                <img src="TIguan-TD-Limbo.jpg" alt="Tiguan">
                 <img src="tiguan1.jpeg" alt="Tiguan">
                 <img src="tiguan2.jpeg" alt="Tiguan">
                 <img src="tiguan3.jpg" alt="Tiguan">
-                <img src="tiguan4.jpeg" alt="Tiguan">
+                <img src="tiguan4.jpg" alt="Tiguan">
+                <img src="Tiguan-TD-Limbo.jpg" alt="Tiguan">
             </div>
         </section>
 
         <!-- Car Description Section -->
         <section class="description-section">
-            <div class="cloud-box">
+            <div class="race-box">
                 <h3>Virtus</h3>
                 <p>Introducing the Virtus GT Plus Sport – a remarkable fusion of power and style. Equipped with a dynamic 1.5L TSI EVO engine and a choice between a 6-speed manual or 7-speed DSG transmission, this sedan invites you to embrace the thrill of the drive. Adorned with refined black & GT accents, the Virtus GT Plus Sport is the perfect companion for those who seek excitement and style on every road.</p>
             </div>
 
-            <div class="cloud-box">
+            <div class="race-box">
                 <h3>Taigun</h3>
                 <p>When you’re in a Taigun GT Plus Sport, the open road becomes an invitation to drive and explore. With no set destination, curiosity takes the wheel, leading the journey into the unknown, powered by a revolutionary 1.5 L TSI engine. Each turn unveils new landscapes, hidden gems waiting to be discovered. From quaint roadside diners to serene lakes nestled in the countryside, wonders are experienced with each mile traveled.</p>
             </div>
 
-            <div class="cloud-box">
+            <div class="race-box">
                 <h3>Tiguan</h3>
-                <p>For the road not taken.
-                    For the road taken twice a day.
-                    For the road that should be called a hill.
-                    For losing network. 
-                    For finding yourself. 
-                    No drive is just another drive when You’re in a Tiguan.</p>
+                <p>For the road not taken. For the road taken twice a day. For the road that should be called a hill. For losing network. For finding yourself. No drive is just another drive when You’re in a Tiguan.</p>
             </div>
         </section>
     </main>
