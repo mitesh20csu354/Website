@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Showcase</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 50px;
+            margin-right: 20px;
+        }
+
+        .brand-name {
+            font-size: 36px;
+            font-family: 'Courier New', Courier, monospace;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        main {
+            display: flex;
+            justify-content: space-between;
+            padding: 40px;
+        }
+
+        .car-selection {
+            flex: 1;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+        }
+
+        .car-selection h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .car-selection label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .car-selection select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .car-display {
+            flex: 1;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .car-display h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .car-image-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        #car-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <!-- Replace this with your logo image -->
+            <img src="logo.jfif" alt="Car Brand Logo" class="logo">
+        </div>
+        <h1 class="brand-name">Car Showcase</h1>
+    </header>
+
+    <main>
+        <section class="car-selection">
+            <h2>Select Car Brand & Model</h2>
+            <label for="car-brand">Choose a Car Brand:</label>
+            <select id="car-brand" onchange="updateModels()">
+                <option value="">--Select--</option>
+                <option value="toyota">Toyota</option>
+                <option value="ford">Ford</option>
+                <option value="bmw">BMW</option>
+            </select>
+
+            <label for="car-model">Choose a Model:</label>
+            <select id="car-model" onchange="updateCarImage()">
+                <option value="">--Select Model--</option>
+            </select>
+        </section>
+
+        <section class="car-display">
+            <h2>Car Image:</h2>
+            <div class="car-image-container">
+                <img id="car-image" src="Volkswagen-Virtus-TDS-2022.jpg" alt="Selected Car" />
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Car Showcase. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Car Models and Images
+        const carData = {
+            toyota: {
+                corolla: "Volkswagen-Virtus-TDS-2022.jpg",
+                camry: "Volkswagen-Virtus-TDS-2022.jpg",
+                rav4: "Volkswagen-Virtus-TDS-2022.jpg"
+            },
+            ford: {
+                mustang: "Tiguan-TD-Limbo.jpg",
+                focus: "Tiguan-TD-Limbo.jpg",
+                explorer: "Tiguan-TD-Limbo.jpg"
+            },
+            bmw: {
+                m3: "Taigun-curcuma-yellow.png",
+                x5: "Taigun-curcuma-yellow.png",
+                i8: "Taigun-curcuma-yellow.png"
+            }
+        };
+
+        // Update the models based on selected brand
+        function updateModels() {
+            const brand = document.getElementById("car-brand").value;
+            const modelSelect = document.getElementById("car-model");
+            modelSelect.innerHTML = '<option value="">--Select Model--</option>'; // Reset models
+
+            if (brand && carData[brand]) {
+                const models = Object.keys(carData[brand]);
+                models.forEach(model => {
+                    const option = document.createElement("option");
+                    option.value = model;
+                    option.textContent = model.charAt(0).toUpperCase() + model.slice(1);
+                    modelSelect.appendChild(option);
+                });
+            }
+        }
+
+        // Update car image based on selected model
+        function updateCarImage() {
+            const brand = document.getElementById("car-brand").value;
+            const model = document.getElementById("car-model").value;
+            const carImage = document.getElementById("car-image");
+
+            if (brand && model && carData[brand][model]) {
+                carImage.src = carData[brand][model];
+                carImage.alt = `${model.charAt(0).toUpperCase() + model.slice(1)} - ${brand.charAt(0).toUpperCase() + brand.slice(1)}`;
+            }
+        }
+    </script>
+</body>
+
+</html>
