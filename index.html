@@ -24,27 +24,22 @@
         /* Header Section */
         header {
             display: flex;
+            justify-content: center;
             align-items: center;
-            background-color: #003366;
+            background-color: #66ccff; /* Light blue background */
             color: white;
             padding: 20px;
-        }
-
-        .logo {
-            margin-right: 20px;
-        }
-
-        .brand-name {
-            font-size: 28px;
-            font-weight: bold;
-            letter-spacing: 1px;
-            text-transform: uppercase;
         }
 
         h1 {
             margin: 0;
             font-size: 50px;
-            color: #ff5c00;
+            color: #ffffff;
+        }
+
+        .brand-name {
+            font-size: 24px;
+            color: white;
         }
 
         /* Main Content */
@@ -53,7 +48,7 @@
             text-align: center;
         }
 
-        /* Carousel Section */
+        /* Image Boxes */
         .carousel-section {
             display: flex;
             justify-content: space-around;
@@ -61,56 +56,36 @@
         }
 
         .carousel-box {
-            flex: 1;
             position: relative;
-            height: 300px;
-            max-width: 400px;
+            width: 30%;
+            height: 350px;
             overflow: hidden;
-            border-radius: 50%;
+            border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            margin: 0 10px;
-            background-color: #fff;
-        }
-
-        .carousel-images {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .carousel-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
+            margin: 0 15px;
             transition: transform 0.3s ease-in-out;
+            cursor: pointer;
         }
 
-        .carousel-box:hover img {
+        .carousel-box:hover {
             transform: scale(1.1);
         }
 
-        .carousel-btn {
+        .carousel-images {
+            width: 100%;
+            height: 100%;
             position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            z-index: 10;
-            border-radius: 50%;
+            display: flex;
+            transition: transform 1s ease-in-out;
         }
 
-        .prev-btn {
-            left: 10px;
+        .carousel-images img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .next-btn {
-            right: 10px;
-        }
-
-        /* Cloud-shaped Boxes for Car Descriptions */
+        /* Car Description Section */
         .description-section {
             display: flex;
             justify-content: space-around;
@@ -174,11 +149,8 @@
 
 <body>
     <header>
-        <div class="logo">
-            <img src="logo.jfif" alt="Volkswagen Logo" height="50">
-        </div>
         <div>
-            <h1>VOLKSWAGEN</h1>
+            <h1>Volkswagen India</h1>
             <p class="brand-name">Know Your Volkswagen</p>
         </div>
     </header>
@@ -186,20 +158,18 @@
     <main>
         <section class="carousel-section">
             <!-- First Car Box (Virtus) -->
-            <div class="carousel-box">
+            <div class="carousel-box" id="virtus-box">
                 <div class="carousel-images" id="virtus-carousel">
                     <img src="virtus1.jfif" alt="Virtus">
                     <img src="Volkswagen-Virtus-TDS-2022.jpg" alt="Virtus">
                     <img src="virtus3.png" alt="Virtus">
                     <img src="virtus4.jpeg" alt="Virtus">
-                    <img src="virtus5.jpg" alt="Virtus">
+                    <img src="virtus5.jpeg" alt="Virtus">
                 </div>
-                <button class="carousel-btn prev-btn" onclick="moveSlide('virtus', -1)">&#10094;</button>
-                <button class="carousel-btn next-btn" onclick="moveSlide('virtus', 1)">&#10095;</button>
             </div>
 
             <!-- Second Car Box (Taigun) -->
-            <div class="carousel-box">
+            <div class="carousel-box" id="taigun-box">
                 <div class="carousel-images" id="taigun-carousel">
                     <img src="taigun1.jpeg" alt="Taigun">
                     <img src="taigun2.jpeg" alt="Taigun">
@@ -207,12 +177,10 @@
                     <img src="taigun4.jpg" alt="Taigun">
                     <img src="taigun5.jpeg" alt="Taigun">
                 </div>
-                <button class="carousel-btn prev-btn" onclick="moveSlide('taigun', -1)">&#10094;</button>
-                <button class="carousel-btn next-btn" onclick="moveSlide('taigun', 1)">&#10095;</button>
             </div>
 
             <!-- Third Car Box (Tiguan) -->
-            <div class="carousel-box">
+            <div class="carousel-box" id="tiguan-box">
                 <div class="carousel-images" id="tiguan-carousel">
                     <img src="tiguan1.jpeg" alt="Tiguan">
                     <img src="tiguan2.jpeg" alt="Tiguan">
@@ -220,8 +188,6 @@
                     <img src="tiguan4.jpeg" alt="Tiguan">
                     <img src="Tiguan-TD-Limbo.jpg" alt="Tiguan">
                 </div>
-                <button class="carousel-btn prev-btn" onclick="moveSlide('tiguan', -1)">&#10094;</button>
-                <button class="carousel-btn next-btn" onclick="moveSlide('tiguan', 1)">&#10095;</button>
             </div>
         </section>
 
@@ -255,12 +221,19 @@
             tiguan: 0
         };
 
-        function moveSlide(car, direction) {
+        const changeSlide = (car) => {
             const carousel = document.getElementById(car + '-carousel');
             const images = carousel.children;
-            currentSlide[car] = (currentSlide[car] + direction + images.length) % images.length;
+            currentSlide[car] = (currentSlide[car] + 1) % images.length;
             carousel.style.transform = `translateX(-${currentSlide[car] * 100}%)`;
-        }
+        };
+
+        // Set a timer to change the images every 5 seconds
+        setInterval(() => {
+            changeSlide('virtus');
+            changeSlide('taigun');
+            changeSlide('tiguan');
+        }, 3000);
     </script>
 
 </body>
