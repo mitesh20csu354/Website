@@ -18,25 +18,18 @@
             background-color: #f4f4f4;
             color: #333;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
+        /* Header Section */
         header {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             background-color: #333;
             color: white;
             padding: 20px;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo {
-            height: 50px;
-            margin-right: 20px;
+            text-align: center;
         }
 
         .brand-name {
@@ -44,166 +37,224 @@
             font-family: 'Courier New', Courier, monospace;
             letter-spacing: 2px;
             text-transform: uppercase;
+            margin-top: 20px;
         }
 
+        h1 {
+            margin: 0;
+            font-size: 50px;
+            color: #ff5c00;
+        }
+
+        /* Main Content */
         main {
-            display: flex;
-            justify-content: space-between;
             padding: 40px;
+            text-align: center;
         }
 
-        .car-selection {
-            flex: 1;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-right: 20px;
-        }
-
-        .car-selection h2 {
-            margin-bottom: 20px;
-            font-size: 24px;
-            color: #333;
-        }
-
-        .car-selection label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 16px;
-        }
-
-        .car-selection select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            font-size: 16px;
-        }
-
-        .car-display {
-            flex: 1;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .car-display h2 {
-            margin-bottom: 20px;
-            font-size: 24px;
-            color: #333;
-        }
-
-        .car-image-container {
+        .carousel-section {
             display: flex;
-            justify-content: center;
+            justify-content: space-around;
+            margin-top: 40px;
         }
 
-        #car-image {
+        .carousel-box {
+            flex: 1;
+            margin: 0 10px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-box img {
             width: 100%;
-            max-width: 400px;
-            height: auto;
-            transition: transform 0.3s ease-in-out;
+            height: 100%;
+            object-fit: cover;
+            animation: fade 30s infinite;
         }
 
+        @keyframes fade {
+            0% {
+                opacity: 1;
+            }
+
+            10% {
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            30% {
+                opacity: 0;
+            }
+
+            40% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            60% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .carousel-box img:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .carousel-box img:nth-child(2) {
+            animation-delay: 5s;
+        }
+
+        .carousel-box img:nth-child(3) {
+            animation-delay: 10s;
+        }
+
+        .carousel-box img:nth-child(4) {
+            animation-delay: 15s;
+        }
+
+        .carousel-box img:nth-child(5) {
+            animation-delay: 20s;
+        }
+
+        .carousel-box img:nth-child(6) {
+            animation-delay: 25s;
+        }
+
+        /* Cloud-shaped Boxes for Car Descriptions */
+        .description-section {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 60px;
+        }
+
+        .cloud-box {
+            width: 30%;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 40px;
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+        }
+
+        .cloud-box:before {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 20px;
+            width: 30px;
+            height: 30px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cloud-box h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .cloud-box p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Footer Section */
         footer {
             text-align: center;
             padding: 20px;
             background-color: #333;
             color: white;
+            margin-top: 50px;
         }
     </style>
 </head>
 
 <body>
     <header>
-        <div class="logo-container">
-            <!-- Replace this with your logo image -->
-            <img src="logo.jfif" alt="Car Brand Logo" class="logo">
+        <div>
+            <h1>KNOW YOUR VOLKSWAGEN</h1>
+            <p class="brand-name">Car Showcase</p>
         </div>
-        <h1 class="brand-name">Volkswagen India</h1>
     </header>
 
     <main>
-        <section class="car-selection">
-            <h2>Select Car Brand & Model</h2>
-            <label for="car-brand">Choose a Car Brand:</label>
-            <select id="car-brand" onchange="updateModels()">
-                <option value="">--Select--</option>
-                <option value="Virtus">Virtus</option>
-                <option value="Tiguan">Tiguan</option>
-                <option value="Taigun">Taigun</option>
-            </select>
+        <section class="carousel-section">
+            <!-- First Car Box -->
+            <div class="carousel-box">
+                <img src="Volkswagen-Virtus-TDS-2022.jpg" alt="Virtus">
+                <img src="toyota-camry.jpg" alt="Virtus">
+                <img src="toyota-rav4.jpg" alt="Virtus">
+                <img src="toyota-prius.jpg" alt="Virtus">
+                <img src="toyota-hilux.jpg" alt="Virtus">
+                <img src="toyota-fortuner.jpg" alt="Virtus">
+            </div>
 
-            <label for="car-model">Choose a Model:</label>
-            <select id="car-model" onchange="updateCarImage()">
-                <option value="">--Select Model--</option>
-            </select>
+            <!-- Second Car Box -->
+            <div class="carousel-box">
+                <img src="ford-mustang.jpg" alt="Taigun">
+                <img src="ford-focus.jpg" alt="Taigun">
+                <img src="ford-explorer.jpg" alt="Taigun">
+                <img src="ford-f150.jpg" alt="Taigun">
+                <img src="ford-escape.jpg" alt="Taigun">
+                <img src="ford-edge.jpg" alt="Taigun">
+            </div>
+
+            <!-- Third Car Box -->
+            <div class="carousel-box">
+                <img src="bmw-m3.jpg" alt="Tiguan">
+                <img src="bmw-x5.jpg" alt="Tiguan">
+                <img src="bmw-i8.jpg" alt="Tiguan">
+                <img src="bmw-x6.jpg" alt="Tiguan">
+                <img src="bmw-z4.jpg" alt="Tiguan">
+                <img src="bmw-7series.jpg" alt="Tiguan">
+            </div>
         </section>
 
-        <section class="car-display">
-            <h2>Car Image:</h2>
-            <div class="car-image-container">
-                <img id="car-image" src="Volkswagen-Virtus-TDS-2022.jpg" alt="Selected Car" />
+        <!-- Car Description Section -->
+        <section class="description-section">
+            <div class="cloud-box">
+                <h3>Virtus</h3>
+                <p>Introducing the Virtus GT Plus Sport – a remarkable fusion of power and style. Equipped with a dynamic 1.5L TSI EVO engine and a choice between a 6-speed manual or 7-speed DSG transmission, this sedan invites you to embrace the thrill of the drive. Adorned with refined black & GT accents, the Virtus GT Plus Sport is the perfect companion for those who seek excitement and style on every road.</p>
+            </div>
+
+            <div class="cloud-box">
+                <h3>Taigun</h3>
+                <p>When you’re in a Taigun GT Plus Sport, the open road becomes an invitation to drive and explore. With no set destination, curiosity takes the wheel, leading the journey into the unknown, powered by a revolutionary 1.5 L TSI engine. Each turn unveils new landscapes, hidden gems waiting to be discovered. From quaint roadside diners to serene lakes nestled in the countryside, wonders are experienced with each mile traveled.</p>
+            </div>
+
+            <div class="cloud-box">
+                <h3>Tiguan</h3>
+                <p>For the road not taken.
+For the road taken twice a day.
+For the road that should be called a hill.
+For losing network. 
+For finding yourself. 
+
+No drive is just another drive when You’re in a Tiguan. </p>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Car Showcase. All rights reserved.</p>
+        <p>&copy; 2024  All rights reserved.</p>
     </footer>
 
-    <script>
-        // Car Models and Images
-        const carData = {
-            virtus: {
-                1.0 M: "Volkswagen-Virtus-TDS-2022.jpg",
-                1.0 AT: "Volkswagen-Virtus-TDS-2022.jpg",
-                1.5 AT TSI: "Volkswagen-Virtus-TDS-2022.jpg"
-            },
-            Tiguan: {
-                2.0 M: "Tiguan-TD-Limbo.jpg",
-                2.0 AT: "Tiguan-TD-Limbo.jpg",
-                2.5 AT TSI: "Tiguan-TD-Limbo.jpg"
-            },
-            Taigun: {
-                1.0 M: "Taigun-curcuma-yellow.png",
-                1.0 AT: "Taigun-curcuma-yellow.png",
-                1.5 AT TSI: "Taigun-curcuma-yellow.png"
-            }
-        };
-
-        // Update the models based on selected brand
-        function updateModels() {
-            const brand = document.getElementById("car-brand").value;
-            const modelSelect = document.getElementById("car-model");
-            modelSelect.innerHTML = '<option value="">--Select Model--</option>'; // Reset models
-
-            if (brand && carData[brand]) {
-                const models = Object.keys(carData[brand]);
-                models.forEach(model => {
-                    const option = document.createElement("option");
-                    option.value = model;
-                    option.textContent = model.charAt(0).toUpperCase() + model.slice(1);
-                    modelSelect.appendChild(option);
-                });
-            }
-        }
-
-        // Update car image based on selected model
-        function updateCarImage() {
-            const brand = document.getElementById("car-brand").value;
-            const model = document.getElementById("car-model").value;
-            const carImage = document.getElementById("car-image");
-
-            if (brand && model && carData[brand][model]) {
-                carImage.src = carData[brand][model];
-                carImage.alt = `${model.charAt(0).toUpperCase() + model.slice(1)} - ${brand.charAt(0).toUpperCase() + brand.slice(1)}`;
-            }
-        }
-    </script>
 </body>
 
 </html>
