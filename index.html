@@ -72,18 +72,18 @@
         }
 
         .carousel-images {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            display: flex;
-            transition: transform 1s ease-in-out;
-        }
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: transform 1s ease-in-out;
+    flex-wrap: nowrap;  /* Ensures images stay in one line */
+}
 
-        .carousel-images img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+.carousel-images img {
+    width: 100%;  /* Each image will take 100% of the container width */
+    height: 100%;
+    object-fit: cover;
+}
 
         /* Car Description Section */
         .description-section {
