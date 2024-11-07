@@ -222,6 +222,22 @@
                 <p>For the road not taken. For the road taken twice a day. For the road that should be called a hill. For losing network. For finding yourself. No drive is just another drive when You’re in a Tiguan.</p>
             </div>
         </section>
+        <section>
+            <h2>Submit Your Details</h2>
+            <form id="contactForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <br><br>
+
+                <label for="mobile">Mobile Number:</label>
+                <input type="text" id="mobile" name="mobile" required>
+                <br><br>
+
+                <button type="submit">Submit</button>
+            </form>
+            
+            <div id="responseMessage"></div>
+        </section>
     </main>
 
     <footer>
@@ -248,6 +264,32 @@
             changeSlide('taigun');
             changeSlide('tiguan');
         }, 3000);
+    </script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();  // Prevent the default form submission
+
+            const name = document.getElementById('name').value;
+            const mobile = document.getElementById('mobile').value;
+
+            fetch('http://127.0.0.1:5000/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: name,
+                    mobile: mobile
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('responseMessage').innerText = data.message;
+            })
+            .catch(error => {
+                document.getElementById('responseMessage').innerText = 'Error: ' + error.message;
+            });
+        });
     </script>
 
 </body>
