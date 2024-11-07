@@ -23,13 +23,18 @@
 
         /* Header Section */
         header {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #66ccff; /* Light blue background */
-            color: white;
-            padding: 20px;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Align logo to left and text to center */
+    background-color: #66b3ff; /* Light blue color */
+    color: white;
+    padding: 20px;
+    position: relative;
+}
+        .logo img {
+    height: 50px; /* Decent size for logo */
+    width: auto;
+}
 
         h1 {
             margin: 0;
@@ -38,9 +43,15 @@
         }
 
         .brand-name {
-            font-size: 24px;
-            color: white;
-        }
+    font-family: var(--font-family-head);  /* Use the font-family head variable if defined */
+    font-weight: 200;
+    font-size: clamp(2rem, 1.28rem + 2.06vw, 3.75rem);
+    line-height: 120%;
+    letter-spacing: calc(-0.02em + 0.02rem);
+    color: rgb(0, 14, 38); /* Dark blue color */
+    text-align: center;
+    flex-grow: 1; /* Makes sure the text is centered */
+}
 
         /* Main Content */
         main {
@@ -53,9 +64,11 @@
             display: flex;
             justify-content: space-around;
             margin-top: 40px;
+            flex-wrap: wrap;
         }
 
         .carousel-box {
+            flex: 1 1 30%;
             position: relative;
             width: 30%;
             height: 350px;
@@ -90,6 +103,7 @@
             display: flex;
             justify-content: space-around;
             margin-top: 60px;
+             flex-wrap: wrap;
         }
 
         .race-box {
